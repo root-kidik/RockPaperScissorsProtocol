@@ -14,7 +14,7 @@ struct NewPlayerAdded : ClientCommand<ClientCommandType::NewPlayerAdded>
 
     auto as_tuple()
     {
-        return std::make_tuple(std::ref(user_nickname));
+        return std::tie(user_nickname);
     }
 };
 

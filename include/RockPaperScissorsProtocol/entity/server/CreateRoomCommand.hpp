@@ -15,7 +15,7 @@ struct CreateRoomCommand : ServerCommand<ServerCommandType::CreateRoom>
 
     auto as_tuple()
     {
-        return std::make_tuple(std::ref(room_name), std::ref(user_uuid));
+        return std::tie(room_name, user_uuid);
     }
 };
 

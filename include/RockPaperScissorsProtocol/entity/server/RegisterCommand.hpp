@@ -14,7 +14,7 @@ struct RegisterCommand : ServerCommand<ServerCommandType::Register>
 
     auto as_tuple()
     {
-        return std::make_tuple(std::ref(user_nickname));
+        return std::tie(user_nickname);
     }
 };
 

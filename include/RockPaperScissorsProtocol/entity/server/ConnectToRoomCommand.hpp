@@ -15,7 +15,7 @@ struct ConnectToRoomCommand : ServerCommand<ServerCommandType::ConnectToRoom>
 
     auto as_tuple()
     {
-        return std::make_tuple(std::ref(user_uuid), std::ref(room_name));
+        return std::tie(user_uuid, room_name);
     }
 };
 
