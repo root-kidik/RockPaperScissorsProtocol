@@ -26,9 +26,7 @@ template <typename Tuple, std::size_t... Is>
 void deserialize_tuple(Tuple& t, const std::string& str, std::index_sequence<Is...>)
 {
     std::istringstream iss{str};
-    std::string        item;
-
-    ((std::getline(iss, item, ' ') && (std::istringstream(item) >> std::get<Is>(t))), ...);
+    ((iss >> std::get<Is>(t)), ...);
 }
 
 template <typename T>
