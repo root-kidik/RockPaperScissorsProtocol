@@ -10,12 +10,12 @@ namespace rps::protocol::entity
 
 struct CreateRoomCommand : ServerCommand<ServerCommandType::CreateRoom>
 {
-    std::string user_uuid;
     std::string room_name;
+    std::string user_uuid;
 
     auto as_tuple()
     {
-        return std::make_tuple(std::ref(user_uuid), std::ref(room_name));
+        return std::make_tuple(std::ref(room_name), std::ref(user_uuid));
     }
 };
 
