@@ -8,7 +8,7 @@
 namespace rps::protocol::entity
 {
 
-struct ConnectToRoomCommand : ServerCommand<ServerCommandTypes::ConnectToRoom>
+struct ConnectToRoomCommand : ServerCommand<ServerCommandType::ConnectToRoom>
 {
     std::string user_uuid;
     std::string room_name;

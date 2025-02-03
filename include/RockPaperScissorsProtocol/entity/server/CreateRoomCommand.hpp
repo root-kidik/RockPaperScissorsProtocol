@@ -8,7 +8,7 @@
 namespace rps::protocol::entity
 {
 
-struct CreateRoomCommand : ServerCommand<ServerCommandTypes::CreateRoom>
+struct CreateRoomCommand : ServerCommand<ServerCommandType::CreateRoom>
 {
     std::string user_uuid;
     std::string room_name;

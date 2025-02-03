@@ -8,7 +8,7 @@
 namespace rps::protocol::entity
 {
 
-struct NewPlayerAdded : ClientCommand<ClientCommandTypes::NewPlayerAdded>
+struct NewPlayerAdded : ClientCommand<ClientCommandType::NewPlayerAdded>
 {
     std::string user_nickname;
 

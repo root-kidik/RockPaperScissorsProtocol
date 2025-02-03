@@ -1,13 +1,13 @@
 #pragma once
 
 #include <RockPaperScissorsProtocol/entity/Command.hpp>
-#include <RockPaperScissorsProtocol/entity/client/ClientCommandTypes.hpp>
+#include <RockPaperScissorsProtocol/entity/client/ClientCommandType.hpp>
 
 namespace rps::protocol::entity
 {
 
-template <ClientCommandTypes Type>
-struct ClientCommand : Command<ClientCommandTypes, Type>
+template <ClientCommandType Type>
+struct ClientCommand : Command<ClientCommandType, Type>
 {
 };
 

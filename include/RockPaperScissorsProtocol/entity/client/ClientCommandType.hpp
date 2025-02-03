@@ -5,9 +5,9 @@
 namespace rps::protocol::entity
 {
 
-enum class ClientCommandTypes : std::uint32_t
+enum class ClientCommandType : std::uint32_t
 {
-    Begin,
+    Begin = 10000,
     NewPlayerAdded,
     End,
 };

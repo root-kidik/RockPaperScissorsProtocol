@@ -5,7 +5,7 @@
 namespace rps::protocol::entity
 {
 
-enum class ServerCommandTypes : std::uint32_t
+enum class ServerCommandType : std::uint32_t
 {
     Begin,
     Register,
