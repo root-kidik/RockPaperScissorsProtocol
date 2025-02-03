@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.25)
+
+set(CMAKE_AUTOMOC ON)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+project(RockPaperScissorsProtocol)
+
+add_library(${PROJECT_NAME} INTERFACE ${SRC})
+
+target_include_directories(${PROJECT_NAME} INTERFACE ${PROJECT_SOURCE_DIR}/include)
