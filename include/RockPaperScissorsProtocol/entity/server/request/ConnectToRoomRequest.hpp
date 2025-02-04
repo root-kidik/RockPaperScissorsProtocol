@@ -5,7 +5,7 @@
 
 #include <RockPaperScissorsProtocol/entity/server/ServerCommand.hpp>
 
-namespace rps::protocol::entity
+namespace rps::protocol::entity::server
 {
 
 struct ConnectToRoomRequest final : ServerCommand<ServerCommandType::ConnectToRoom>

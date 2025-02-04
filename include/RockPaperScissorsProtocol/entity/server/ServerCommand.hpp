@@ -3,7 +3,7 @@
 #include <RockPaperScissorsProtocol/entity/Command.hpp>
 #include <RockPaperScissorsProtocol/entity/server/ServerCommandType.hpp>
 
-namespace rps::protocol::entity
+namespace rps::protocol::entity::server
 {
 
 template <ServerCommandType Type>

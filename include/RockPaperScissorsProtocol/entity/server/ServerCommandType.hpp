@@ -2,7 +2,7 @@
 
 #include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
 
-namespace rps::protocol::entity
+namespace rps::protocol::entity::server
 {
 
 enum class ServerCommandType : CommandRepresentation

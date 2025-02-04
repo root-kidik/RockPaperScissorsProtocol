@@ -38,7 +38,7 @@ private:
     std::unordered_map<CommandType, interface::CommandHandlerBase&> m_commands;
 };
 
-using ServerCommandExecutor = CommandExecutor<ServerCommandType>;
-using ClientCommandExecutor = CommandExecutor<ClientCommandType>;
+using ServerCommandExecutor = CommandExecutor<server::ServerCommandType>;
+using ClientCommandExecutor = CommandExecutor<client::ClientCommandType>;
 
 } // namespace rps::protocol::entity
