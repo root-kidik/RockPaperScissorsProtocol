@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
 #include <RockPaperScissorsProtocol/interface/Connection.hpp>
 #include <RockPaperScissorsProtocol/utils/Utils.hpp>

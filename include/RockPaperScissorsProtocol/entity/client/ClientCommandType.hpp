@@ -10,6 +10,7 @@ enum class ClientCommandType : CommandRepresentation
     Begin = 10'000, // just for min value
     Status,
     NewPlayerAdded,
+    GameStarted,
     End // just for max value
 };
 
