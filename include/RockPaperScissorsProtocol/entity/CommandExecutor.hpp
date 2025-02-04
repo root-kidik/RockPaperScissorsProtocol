@@ -5,8 +5,6 @@
 #include <string>
 #include <unordered_map>
 
-#include <RockPaperScissorsProtocol/entity/client/ClientCommandType.hpp>
-#include <RockPaperScissorsProtocol/entity/server/ServerCommandType.hpp>
 #include <RockPaperScissorsProtocol/interface/CommandHandlerBase.hpp>
 #include <RockPaperScissorsProtocol/interface/Connection.hpp>
 
@@ -37,8 +35,5 @@ public:
 private:
     std::unordered_map<CommandType, interface::CommandHandlerBase&> m_commands;
 };
-
-using ServerCommandExecutor = CommandExecutor<server::ServerCommandType>;
-using ClientCommandExecutor = CommandExecutor<client::ClientCommandType>;
 
 } // namespace rps::protocol::entity
