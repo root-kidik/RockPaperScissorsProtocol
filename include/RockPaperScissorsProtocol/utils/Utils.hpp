@@ -7,6 +7,10 @@
 namespace rps::protocol::utils
 {
 
+/*
+Boost.pfr - I miss you
+*/
+
 template <typename Tuple, std::size_t... Is>
 std::string serialize_tuple(Tuple&& t, std::index_sequence<Is...>)
 {
