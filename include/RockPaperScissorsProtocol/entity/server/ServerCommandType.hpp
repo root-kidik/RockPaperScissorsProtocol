@@ -1,17 +1,18 @@
 #pragma once
 
-#include <cstdint>
+#include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
 
 namespace rps::protocol::entity
 {
 
-enum class ServerCommandType : std::uint32_t
+enum class ServerCommandType : CommandRepresentation
 {
-    Begin,
+    Begin, // just for min value
+    Status,
     Register,
     CreateRoom,
     ConnectToRoom,
-    End,
+    End // just for max value
 };
 
 } // namespace rps::protocol::entity

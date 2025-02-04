@@ -7,7 +7,7 @@
 
 #include <RockPaperScissorsProtocol/entity/client/ClientCommandType.hpp>
 #include <RockPaperScissorsProtocol/entity/server/ServerCommandType.hpp>
-#include <RockPaperScissorsProtocol/interface/CommandHandler.hpp>
+#include <RockPaperScissorsProtocol/interface/CommandHandlerBase.hpp>
 #include <RockPaperScissorsProtocol/interface/Connection.hpp>
 
 namespace rps::protocol::entity
@@ -17,16 +17,16 @@ template <typename CommandType>
 class CommandExecutor
 {
 public:
-    void execute_command(CommandType command_type, const std::string& data, const std::shared_ptr<interface::Connection>& connection)
+    void execute_command(CommandType command_type, std::string&& data, const std::shared_ptr<interface::Connection>& connection)
     {
         auto it = m_commands.find(command_type);
 
         assert(it != m_commands.end() && "Not setted command to execute this command_type");
 
-        it->second.execute(data, connection);
+        it->second.execute(std::move(data), connection);
     }
 
-    void register_command(CommandType command_type, interface::CommandHandler& command)
+    void register_command(CommandType command_type, interface::CommandHandlerBase& command)
     {
         assert(m_commands.find(command_type) == m_commands.end() &&
                "Already setted command to execute this command_type");
@@ -35,7 +35,7 @@ public:
     }
 
 private:
-    std::unordered_map<CommandType, interface::CommandHandler&> m_commands;
+    std::unordered_map<CommandType, interface::CommandHandlerBase&> m_commands;
 };
 
 using ServerCommandExecutor = CommandExecutor<ServerCommandType>;

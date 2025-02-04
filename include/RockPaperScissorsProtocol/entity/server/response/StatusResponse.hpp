@@ -8,14 +8,13 @@
 namespace rps::protocol::entity
 {
 
-struct CreateRoomCommand : ServerCommand<ServerCommandType::CreateRoom>
+struct StatusResponse : ServerCommand<ServerCommandType::Status>
 {
-    std::string room_name;
-    std::string user_uuid;
+    bool is_ok;
 
     auto as_tuple()
     {
-        return std::tie(room_name, user_uuid);
+        return std::tie(is_ok);
     }
 };
 

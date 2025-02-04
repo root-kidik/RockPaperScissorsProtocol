@@ -1,15 +1,15 @@
 #pragma once
 
-#include <cstdint>
+#include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
 
 namespace rps::protocol::entity
 {
 
-enum class ClientCommandType : std::uint32_t
+enum class ClientCommandType : CommandRepresentation
 {
-    Begin = 10000,
+    Begin = 10000, // just for min value
     NewPlayerAdded,
-    End,
+    End // just for max value
 };
 
 } // namespace rps::protocol::entity
