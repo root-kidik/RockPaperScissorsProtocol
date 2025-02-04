@@ -21,19 +21,21 @@ public:
 
         assert(it != m_commands.end() && "Not setted command to execute this command_type");
 
-        it->second.execute(std::move(data), connection);
+        it->second->execute(std::move(data), connection);
     }
 
-    void register_command(CommandType command_type, interface::CommandHandlerBase& command)
+    template <typename CommandHandler, typename... Args>
+    void register_command(Args&&... args)
     {
-        assert(m_commands.find(command_type) == m_commands.end() &&
+        assert(m_commands.find(CommandHandler::RequestType::kType) == m_commands.end() &&
                "Already setted command to execute this command_type");
 
-        m_commands.emplace(command_type, command);
+        m_commands.emplace(CommandHandler::RequestType::kType,
+                           std::make_unique<CommandHandler>(std::forward<Args>(args)...));
     }
 
 private:
-    std::unordered_map<CommandType, interface::CommandHandlerBase&> m_commands;
+    std::unordered_map<CommandType, std::unique_ptr<interface::CommandHandlerBase>> m_commands;
 };
 
 } // namespace rps::protocol::entity

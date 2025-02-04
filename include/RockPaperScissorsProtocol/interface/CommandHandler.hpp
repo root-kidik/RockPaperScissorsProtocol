@@ -14,6 +14,8 @@ template <typename Request, typename Response>
 class CommandHandler : public CommandHandlerBase
 {
 public:
+    using RequestType = Request;
+
     void execute(std::string&& data, const std::shared_ptr<Connection>& connection) override final
     {
         connection->send(std::to_string(static_cast<entity::CommandRepresentation>(Response::kType)) + ' ' +
