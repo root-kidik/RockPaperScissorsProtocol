@@ -8,7 +8,7 @@
 namespace rps::protocol::entity
 {
 
-struct RegisterResponse : ServerCommand<ServerCommandType::Register>
+struct RegisterResponse final : ServerCommand<ServerCommandType::Register>
 {
     std::string user_uuid;
 

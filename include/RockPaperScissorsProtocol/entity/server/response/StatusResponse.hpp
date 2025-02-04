@@ -8,7 +8,7 @@
 namespace rps::protocol::entity
 {
 
-struct StatusResponse : ServerCommand<ServerCommandType::Status>
+struct StatusResponse final : ServerCommand<ServerCommandType::Status>
 {
     bool is_ok;
 

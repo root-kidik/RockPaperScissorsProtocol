@@ -8,7 +8,7 @@
 namespace rps::protocol::entity
 {
 
-struct RegisterRequest : ServerCommand<ServerCommandType::Register>
+struct RegisterRequest final : ServerCommand<ServerCommandType::Register>
 {
     std::string user_nickname;
 
