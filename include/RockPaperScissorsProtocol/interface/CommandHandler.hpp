@@ -28,8 +28,8 @@ public:
     virtual Response handle(Request&& request, const std::shared_ptr<Connection>& connection) = 0;
 };
 
-using ConnectToRoomHandlerBase     = CommandHandler<entity::ConnectToRoomRequest, entity::StatusResponse>;
-using CreateRoomCommandHandlerBase = CommandHandler<entity::CreateRoomRequest, entity::StatusResponse>;
-using RegisterCommandHandlerBase   = CommandHandler<entity::RegisterRequest, entity::RegisterResponse>;
+using ConnectToRoomCommandHandlerBase = CommandHandler<entity::ConnectToRoomRequest, entity::StatusResponse>;
+using CreateRoomCommandHandlerBase    = CommandHandler<entity::CreateRoomRequest, entity::StatusResponse>;
+using RegisterCommandHandlerBase      = CommandHandler<entity::RegisterRequest, entity::RegisterResponse>;
 
 } // namespace rps::protocol::interface
