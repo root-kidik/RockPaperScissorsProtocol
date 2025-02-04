@@ -15,7 +15,7 @@ public:
     void send(Request&& command, const std::shared_ptr<interface::Connection>& connection)
     {
         connection->send(std::to_string(static_cast<CommandRepresentation>(Request::kType)) + ' ' +
-                         utils::serialize(command));
+                         utils::serialize(std::move(command)));
     }
 };
 
