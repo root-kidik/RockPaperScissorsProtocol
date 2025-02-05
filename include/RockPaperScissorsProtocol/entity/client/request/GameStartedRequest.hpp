@@ -1,8 +1,8 @@
 #pragma once
 
-#include <optional>
-#include <string>
+#include <array>
 
+#include <RockPaperScissorsProtocol/entity/Card.hpp>
 #include <RockPaperScissorsProtocol/entity/client/ClientCommand.hpp>
 
 namespace rps::protocol::entity::client
@@ -10,11 +10,11 @@ namespace rps::protocol::entity::client
 
 struct GameStartedRequest final : ClientCommand<ClientCommandType::GameStarted>
 {
-    std::string room_name;
+    std::array<Card, kMaxCardsPerPlayer> cards;
 
     auto as_tuple()
     {
-        return std::tie(room_name);
+        return std::tie(cards);
     }
 };
 

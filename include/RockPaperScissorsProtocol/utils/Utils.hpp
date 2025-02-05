@@ -11,6 +11,28 @@ namespace rps::protocol::utils
 Boost.pfr - I miss you
 */
 
+template <typename T, std::size_t N>
+std::ostream& operator<<(std::ostream& os, const std::array<T, N>& arr)
+{
+    for (std::size_t i = 0; i < N; ++i)
+    {
+        os << std::underlying_type_t<T>(arr[i]); // Maybe enum
+        if (i < N - 1)
+            os << ' ';
+    }
+
+    return os;
+}
+
+template <typename T, std::size_t N>
+std::istream& operator>>(std::istream& is, std::array<T, N>& arr)
+{
+    for (std::size_t i = 0; i < N; ++i)
+        is >> arr[i];
+
+    return is;
+}
+
 template <typename Tuple, std::size_t... Is>
 std::string serialize_tuple(Tuple&& t, std::index_sequence<Is...>)
 {
