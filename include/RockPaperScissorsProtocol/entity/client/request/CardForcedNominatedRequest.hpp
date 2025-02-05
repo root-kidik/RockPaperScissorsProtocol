@@ -9,13 +9,13 @@
 namespace rps::protocol::entity::client
 {
 
-struct GameStartedRequest final : ClientCommand<ClientCommandType::GameStarted>
+struct CardForcedNominatedRequest final : ClientCommand<ClientCommandType::CardForcedNominated>
 {
-    std::array<Card, kMaxCardsPerPlayer> cards;
+    Card card;
 
     auto as_tuple()
     {
-        return std::tie(cards);
+        return std::tie(card);
     }
 };
 

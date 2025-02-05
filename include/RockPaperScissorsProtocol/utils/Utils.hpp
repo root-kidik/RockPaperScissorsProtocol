@@ -11,12 +11,18 @@ namespace rps::protocol::utils
 Boost.pfr - I miss you
 */
 
+template <typename Enum, typename = std::enable_if_t<std::is_enum_v<Enum>>>
+std::ostream& operator<<(std::ostream& os, Enum e)
+{
+    return os << static_cast<std::underlying_type_t<Enum>>(e);
+}
+
 template <typename T, std::size_t N>
 std::ostream& operator<<(std::ostream& os, const std::array<T, N>& arr)
 {
     for (std::size_t i = 0; i < N; ++i)
     {
-        os << std::underlying_type_t<T>(arr[i]); // Maybe enum
+        os << arr[i];
         if (i < N - 1)
             os << ' ';
     }

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <array>
 #include <tuple>
 
 #include <RockPaperScissorsProtocol/entity/Card.hpp>
@@ -9,13 +8,13 @@
 namespace rps::protocol::entity::client
 {
 
-struct GameStartedRequest final : ClientCommand<ClientCommandType::GameStarted>
+struct CardRaisedRequest final : ClientCommand<ClientCommandType::CardRaised>
 {
-    std::array<Card, kMaxCardsPerPlayer> cards;
+    Card card;
 
     auto as_tuple()
     {
-        return std::tie(cards);
+        return std::tie(card);
     }
 };
 

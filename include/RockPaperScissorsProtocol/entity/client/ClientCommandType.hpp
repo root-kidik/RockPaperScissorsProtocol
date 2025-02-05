@@ -11,6 +11,8 @@ enum class ClientCommandType : CommandRepresentation
     Status,
     NewPlayerAdded,
     GameStarted,
+    CardForcedNominated,
+    CardRaised,
     End // just for max value
 };
 
