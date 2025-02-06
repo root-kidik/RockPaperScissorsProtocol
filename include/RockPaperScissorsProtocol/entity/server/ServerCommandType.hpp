@@ -13,6 +13,7 @@ enum class ServerCommandType : CommandRepresentation
     CreateRoom,
     ConnectToRoom,
     StartGame,
+    NominateCard,
     End // just for max value
 };
 

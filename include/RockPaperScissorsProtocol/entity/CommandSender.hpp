@@ -16,7 +16,7 @@ public:
     template <typename Request>
     void send(Request&& command, const std::shared_ptr<interface::Connection>& connection)
     {
-        connection->send(util::serialize_request(std::move(command)));
+        connection->send(util::serialize_command(std::move(command)));
     }
 };
 

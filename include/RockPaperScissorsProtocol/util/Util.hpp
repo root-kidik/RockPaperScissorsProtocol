@@ -72,10 +72,10 @@ T deserialize(std::string&& str)
     return obj;
 }
 
-template <typename Request>
-std::string serialize_request(Request&& request)
+template <typename Command>
+std::string serialize_command(Command&& command)
 {
-    return std::to_string(static_cast<entity::CommandRepresentation>(Request::kType)) + ' ' + serialize(std::move(request));
+    return std::to_string(static_cast<entity::CommandRepresentation>(Command::kType)) + ' ' + serialize(std::move(command));
 }
 
 } // namespace rps::protocol::util
