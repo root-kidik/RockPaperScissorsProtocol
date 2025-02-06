@@ -19,4 +19,4 @@ struct StartGameRequest final : ServerCommand<ServerCommandType::StartGame>
     }
 };
 
-} // namespace rps::protocol::entity
+} // namespace rps::protocol::entity::server

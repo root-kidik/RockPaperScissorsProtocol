@@ -18,4 +18,4 @@ struct RegisterRequest final : ServerCommand<ServerCommandType::Register>
     }
 };
 
-} // namespace rps::protocol::entity
+} // namespace rps::protocol::entity::server

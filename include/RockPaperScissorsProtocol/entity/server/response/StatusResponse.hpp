@@ -18,4 +18,4 @@ struct StatusResponse final : ServerCommand<ServerCommandType::Status>
     }
 };
 
-} // namespace rps::protocol::entity
+} // namespace rps::protocol::entity::server

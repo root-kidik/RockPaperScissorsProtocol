@@ -11,4 +11,4 @@ struct ServerCommand : Command<ServerCommandType, Type>
 {
 };
 
-} // namespace rps::protocol::entity
+} // namespace rps::protocol::entity::server

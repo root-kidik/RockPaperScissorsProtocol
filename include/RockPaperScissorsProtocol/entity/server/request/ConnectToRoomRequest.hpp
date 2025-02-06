@@ -19,4 +19,4 @@ struct ConnectToRoomRequest final : ServerCommand<ServerCommandType::ConnectToRo
     }
 };
 
-} // namespace rps::protocol::entity
+} // namespace rps::protocol::entity::server

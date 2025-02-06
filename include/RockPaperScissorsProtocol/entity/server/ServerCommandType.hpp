@@ -16,4 +16,4 @@ enum class ServerCommandType : CommandRepresentation
     End // just for max value
 };
 
-} // namespace rps::protocol::entity
+} // namespace rps::protocol::entity::server

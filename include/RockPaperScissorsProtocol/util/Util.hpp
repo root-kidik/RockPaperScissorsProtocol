@@ -4,7 +4,9 @@
 #include <string>
 #include <tuple>
 
-namespace rps::protocol::utils
+#include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
+
+namespace rps::protocol::util
 {
 
 /*
@@ -70,4 +72,10 @@ T deserialize(std::string&& str)
     return obj;
 }
 
-} // namespace rps::protocol::utils
+template <typename Request>
+std::string serialize_request(Request&& request)
+{
+    return std::to_string(static_cast<entity::CommandRepresentation>(Request::kType)) + ' ' + serialize(std::move(request));
+}
+
+} // namespace rps::protocol::util

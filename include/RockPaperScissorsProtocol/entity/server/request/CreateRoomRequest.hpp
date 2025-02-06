@@ -19,4 +19,4 @@ struct CreateRoomRequest final : ServerCommand<ServerCommandType::CreateRoom>
     }
 };
 
-} // namespace rps::protocol::entity
+} // namespace rps::protocol::entity::server
