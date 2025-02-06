@@ -13,6 +13,7 @@ enum class ClientCommandType : CommandRepresentation
     GameStarted,
     CardForcedNominated,
     CardRaised,
+    RoundInfo,
     End // just for max value
 };
 
