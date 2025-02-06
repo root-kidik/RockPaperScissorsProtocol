@@ -1,9 +1,9 @@
 #pragma once
 
+#include <cassert>
 #include <sstream>
 #include <string>
 #include <tuple>
-#include <cassert>
 
 #include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
 
@@ -17,7 +17,7 @@ Boost.pfr - I miss you
 template <typename Enum, typename = std::enable_if_t<std::is_enum_v<Enum>>>
 std::ostream& operator<<(std::ostream& os, Enum& e)
 {
-    assert(static_cast<std::underlying_type_t<Enum>>(e) > static_cast<std::underlying_type_t<Enum>>(Enum::Begin) && 
+    assert(static_cast<std::underlying_type_t<Enum>>(e) > static_cast<std::underlying_type_t<Enum>>(Enum::Begin) &&
            static_cast<std::underlying_type_t<Enum>>(e) < static_cast<std::underlying_type_t<Enum>>(Enum::End));
 
     return os << static_cast<std::underlying_type_t<Enum>>(e);
@@ -29,7 +29,7 @@ std::istream& operator>>(std::istream& is, Enum& e)
     std::underlying_type_t<Enum> value;
     is >> value;
 
-    assert(value > static_cast<std::underlying_type_t<Enum>>(Enum::Begin) && 
+    assert(value > static_cast<std::underlying_type_t<Enum>>(Enum::Begin) &&
            value < static_cast<std::underlying_type_t<Enum>>(Enum::End));
 
     e = static_cast<Enum>(value);
@@ -93,6 +93,13 @@ template <typename Command>
 std::string serialize_command(Command&& command)
 {
     return std::to_string(static_cast<entity::CommandRepresentation>(Command::kType)) + ' ' + serialize(std::move(command));
+}
+
+template <typename Enum, typename = std::enable_if_t<std::is_enum_v<Enum>>>
+bool is_enum_has_valid_value(Enum e)
+{
+    return static_cast<std::underlying_type_t<Enum>>(e) > static_cast<std::underlying_type_t<Enum>>(Enum::Begin) &&
+           static_cast<std::underlying_type_t<Enum>>(e) < static_cast<std::underlying_type_t<Enum>>(Enum::End);
 }
 
 } // namespace rps::protocol::util
