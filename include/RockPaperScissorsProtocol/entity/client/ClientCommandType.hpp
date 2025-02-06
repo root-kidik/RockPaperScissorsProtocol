@@ -14,6 +14,7 @@ enum class ClientCommandType : CommandRepresentation
     CardForcedNominated,
     CardRaised,
     RoundInfo,
+    DealMissingCard,
     End // just for max value
 };
 
