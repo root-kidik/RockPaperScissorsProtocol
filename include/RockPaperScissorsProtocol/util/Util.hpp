@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <tuple>
+#include <cassert>
 
 #include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
 
@@ -14,9 +15,25 @@ Boost.pfr - I miss you
 */
 
 template <typename Enum, typename = std::enable_if_t<std::is_enum_v<Enum>>>
-std::ostream& operator<<(std::ostream& os, Enum e)
+std::ostream& operator<<(std::ostream& os, Enum& e)
 {
+    assert(static_cast<std::underlying_type_t<Enum>>(e) > static_cast<std::underlying_type_t<Enum>>(Enum::Begin) && 
+           static_cast<std::underlying_type_t<Enum>>(e) < static_cast<std::underlying_type_t<Enum>>(Enum::End));
+
     return os << static_cast<std::underlying_type_t<Enum>>(e);
+}
+
+template <typename Enum, typename = std::enable_if_t<std::is_enum_v<Enum>>>
+std::istream& operator>>(std::istream& is, Enum& e)
+{
+    std::underlying_type_t<Enum> value;
+    is >> value;
+
+    assert(value > static_cast<std::underlying_type_t<Enum>>(Enum::Begin) && 
+           value < static_cast<std::underlying_type_t<Enum>>(Enum::End));
+
+    e = static_cast<Enum>(value);
+    return is;
 }
 
 template <typename T, std::size_t N>
@@ -45,7 +62,7 @@ template <typename Tuple, std::size_t... Is>
 std::string serialize_tuple(Tuple&& t, std::index_sequence<Is...>)
 {
     std::ostringstream oss;
-    ((oss << std::get<Is>(std::move(t)) << (Is + 1 < sizeof...(Is) ? " " : "")), ...);
+    ((oss << std::get<Is>(t) << (Is + 1 < sizeof...(Is) ? " " : "")), ...);
     return oss.str();
 }
 
@@ -60,7 +77,7 @@ template <typename Tuple, std::size_t... Is>
 void deserialize_tuple(Tuple&& t, std::string&& str, std::index_sequence<Is...>)
 {
     std::istringstream iss{std::move(str)};
-    ((iss >> std::get<Is>(std::move(t))), ...);
+    ((iss >> std::get<Is>(t)), ...);
 }
 
 template <typename T>
