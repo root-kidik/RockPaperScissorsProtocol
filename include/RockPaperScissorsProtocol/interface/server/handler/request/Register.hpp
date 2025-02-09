@@ -9,4 +9,4 @@ namespace rps::protocol::interface::server::handler::request
 
 using Register = RequestHandler<entity::server::request::Register, entity::server::response::Register>;
 
-} // namespace rps::protocol::interface::server::handler::request::::
+} // namespace rps::protocol::interface::server::handler::request

@@ -10,4 +10,4 @@ namespace rps::protocol::interface::server::handler::request
 using ConnectToRoom = RequestHandler<entity::server::request::ConnectToRoom,
                                      entity::server::response::Status<entity::server::request::ConnectToRoom>>;
 
-} // namespace rps::protocol::interface::server::handler::request::::
+} // namespace rps::protocol::interface::server::handler::request

@@ -10,4 +10,4 @@ namespace rps::protocol::interface::server::handler::request
 using StartGame = RequestHandler<entity::server::request::StartGame,
                                  entity::server::response::Status<entity::server::request::StartGame>>;
 
-} // namespace rps::protocol::interface::server::handler::request::::
+} // namespace rps::protocol::interface::server::handler::request
