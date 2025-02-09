@@ -40,6 +40,10 @@ public:
 
         data.erase(0, 1);
 
+#ifndef NDEBUG
+        std::cout << data << '\n';
+#endif
+
         if (util::is_valid_value_for_enum<RequestMessageType>(message_type))
         {
             auto it = m_request_handlers.find(static_cast<RequestMessageType>(message_type));
