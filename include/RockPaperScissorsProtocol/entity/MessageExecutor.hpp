@@ -7,8 +7,8 @@
 #include <unordered_map>
 
 #include <RockPaperScissorsProtocol/entity/MessageRepresentation.hpp>
-#include <RockPaperScissorsProtocol/interface/MessageHandlerBase.hpp>
 #include <RockPaperScissorsProtocol/interface/Connection.hpp>
+#include <RockPaperScissorsProtocol/interface/MessageHandlerBase.hpp>
 
 namespace rps::protocol::entity
 {
