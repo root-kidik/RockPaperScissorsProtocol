@@ -6,6 +6,10 @@
 #include <string>
 #include <unordered_map>
 
+#ifndef NDEBUG
+#include <iostream>
+#endif
+
 #include <RockPaperScissorsProtocol/entity/MessageRepresentation.hpp>
 #include <RockPaperScissorsProtocol/interface/Connection.hpp>
 #include <RockPaperScissorsProtocol/interface/MessageHandlerBase.hpp>
@@ -51,7 +55,7 @@ public:
 #ifndef NDEBUG
             std::cout << "Not setted response handler to handle this message_type\n";
 #endif
-            if (it == m_request_handlers.end())
+            if (it == m_response_handlers.end())
                 return;
 
             it->second->execute(std::move(data), connection);
