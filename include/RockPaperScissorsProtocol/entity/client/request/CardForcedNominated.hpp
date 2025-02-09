@@ -4,12 +4,12 @@
 #include <tuple>
 
 #include <RockPaperScissorsProtocol/entity/Card.hpp>
-#include <RockPaperScissorsProtocol/entity/client/ClientCommand.hpp>
+#include <RockPaperScissorsProtocol/entity/client/ClientMessage.hpp>
 
 namespace rps::protocol::entity::client::request
 {
 
-struct CardForcedNominated final : ClientCommand<ClientCommandType::CardForcedNominated>
+struct CardForcedNominated final : ClientMessage<ClientMessageType::CardForcedNominated>
 {
     Card card;
 

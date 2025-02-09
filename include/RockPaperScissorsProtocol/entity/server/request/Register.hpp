@@ -3,12 +3,12 @@
 #include <optional>
 #include <string>
 
-#include <RockPaperScissorsProtocol/entity/server/ServerCommand.hpp>
+#include <RockPaperScissorsProtocol/entity/server/ServerMessage.hpp>
 
 namespace rps::protocol::entity::server::request
 {
 
-struct Register final : ServerCommand<ServerCommandType::Register>
+struct Register final : ServerMessage<ServerMessageType::Register>
 {
     std::string user_nickname;
 

@@ -3,7 +3,6 @@
 #include <memory>
 #include <string>
 
-#include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
 #include <RockPaperScissorsProtocol/interface/CommandHandlerBase.hpp>
 #include <RockPaperScissorsProtocol/util/Util.hpp>
 
@@ -18,7 +17,7 @@ public:
 
     void execute(std::string&& data, const std::shared_ptr<Connection>& connection) override final
     {
-        connection->send(util::serialize_command(handle(util::deserialize<Request>(std::move(data)), connection)));
+        connection->send(util::serialize_message(handle(util::deserialize<Request>(std::move(data)), connection)));
     }
 
     virtual Response handle(Request&& request, const std::shared_ptr<Connection>& connection) = 0;

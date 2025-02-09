@@ -3,12 +3,12 @@
 #include <optional>
 #include <string>
 
-#include <RockPaperScissorsProtocol/entity/server/ServerCommand.hpp>
+#include <RockPaperScissorsProtocol/entity/server/ServerMessage.hpp>
 
 namespace rps::protocol::entity::server::request
 {
 
-struct ConnectToRoom final : ServerCommand<ServerCommandType::ConnectToRoom>
+struct ConnectToRoom final : ServerMessage<ServerMessageType::ConnectToRoom>
 {
     std::string user_uuid;
     std::string room_name;

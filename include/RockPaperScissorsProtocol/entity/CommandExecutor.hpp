@@ -6,14 +6,14 @@
 #include <string>
 #include <unordered_map>
 
-#include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
+#include <RockPaperScissorsProtocol/entity/MessageRepresentation.hpp>
 #include <RockPaperScissorsProtocol/interface/CommandHandlerBase.hpp>
 #include <RockPaperScissorsProtocol/interface/Connection.hpp>
 
 namespace rps::protocol::entity
 {
 
-template <typename CommandType>
+template <typename MessageType>
 class CommandExecutor
 {
 public:
@@ -21,11 +21,11 @@ public:
     {
         std::istringstream iss{std::move(raw_data)};
 
-        entity::CommandRepresentation command_type;
+        entity::MessageRepresentation command_type;
         iss >> command_type;
 
-        if (command_type < static_cast<entity::CommandRepresentation>(CommandType::Begin) + 1 ||
-            command_type > static_cast<entity::CommandRepresentation>(CommandType::End) - 1)
+        if (command_type < static_cast<entity::MessageRepresentation>(MessageType::Begin) + 1 ||
+            command_type > static_cast<entity::MessageRepresentation>(MessageType::End) - 1)
             return;
 
         std::string data;
@@ -34,7 +34,7 @@ public:
         if (!data.empty() && std::isspace(data.front()))
             data.erase(0, 1);
 
-        auto it = m_commands.find(static_cast<CommandType>(command_type));
+        auto it = m_commands.find(static_cast<MessageType>(command_type));
 
         assert(it != m_commands.end() && "Not setted command to execute this command_type");
 
@@ -52,7 +52,7 @@ public:
     }
 
 private:
-    std::unordered_map<CommandType, std::unique_ptr<interface::CommandHandlerBase>> m_commands;
+    std::unordered_map<MessageType, std::unique_ptr<interface::CommandHandlerBase>> m_commands;
 };
 
 } // namespace rps::protocol::entity

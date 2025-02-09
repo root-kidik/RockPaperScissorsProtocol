@@ -3,12 +3,12 @@
 #include <optional>
 #include <string>
 
-#include <RockPaperScissorsProtocol/entity/client/ClientCommand.hpp>
+#include <RockPaperScissorsProtocol/entity/client/ClientMessage.hpp>
 
 namespace rps::protocol::entity::client::request
 {
 
-struct RoundInfo final : ClientCommand<ClientCommandType::RoundInfo>
+struct RoundInfo final : ClientMessage<ClientMessageType::RoundInfo>
 {
     bool is_winned;
 

@@ -3,12 +3,12 @@
 #include <optional>
 #include <string>
 
-#include <RockPaperScissorsProtocol/entity/server/ServerCommand.hpp>
+#include <RockPaperScissorsProtocol/entity/server/ServerMessage.hpp>
 
 namespace rps::protocol::entity::server::response
 {
 
-struct Status final : ServerCommand<ServerCommandType::Status>
+struct Status final : ServerMessage<ServerMessageType::Status>
 {
     bool is_ok;
 

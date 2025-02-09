@@ -6,7 +6,7 @@ namespace rps::protocol::entity
 {
 
 template <typename T, T Type, typename = std::enable_if_t<std::is_enum_v<T>>>
-struct Command
+struct Message
 {
     static constexpr T kType = Type;
 };

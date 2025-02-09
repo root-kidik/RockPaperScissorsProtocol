@@ -3,12 +3,12 @@
 #include <optional>
 #include <string>
 
-#include <RockPaperScissorsProtocol/entity/client/ClientCommand.hpp>
+#include <RockPaperScissorsProtocol/entity/client/ClientMessage.hpp>
 
 namespace rps::protocol::entity::client::response
 {
 
-struct Status final : ClientCommand<ClientCommandType::Status>
+struct Status final : ClientMessage<ClientMessageType::Status>
 {
     bool is_ok;
 

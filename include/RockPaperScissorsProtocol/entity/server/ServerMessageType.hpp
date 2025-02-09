@@ -1,11 +1,11 @@
 #pragma once
 
-#include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
+#include <RockPaperScissorsProtocol/entity/MessageRepresentation.hpp>
 
 namespace rps::protocol::entity::server
 {
 
-enum class ServerCommandType : CommandRepresentation
+enum class ServerMessageType : MessageRepresentation
 {
     Begin, // just for min value
     Status,

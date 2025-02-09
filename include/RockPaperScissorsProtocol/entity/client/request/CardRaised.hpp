@@ -3,12 +3,12 @@
 #include <tuple>
 
 #include <RockPaperScissorsProtocol/entity/Card.hpp>
-#include <RockPaperScissorsProtocol/entity/client/ClientCommand.hpp>
+#include <RockPaperScissorsProtocol/entity/client/ClientMessage.hpp>
 
 namespace rps::protocol::entity::client::request
 {
 
-struct CardRaised final : ClientCommand<ClientCommandType::CardRaised>
+struct CardRaised final : ClientMessage<ClientMessageType::CardRaised>
 {
     Card card;
 

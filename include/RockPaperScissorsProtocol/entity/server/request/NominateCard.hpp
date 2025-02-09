@@ -4,12 +4,12 @@
 #include <string>
 
 #include <RockPaperScissorsProtocol/entity/Card.hpp>
-#include <RockPaperScissorsProtocol/entity/server/ServerCommand.hpp>
+#include <RockPaperScissorsProtocol/entity/server/ServerMessage.hpp>
 
 namespace rps::protocol::entity::server::request
 {
 
-struct NominateCard final : ServerCommand<ServerCommandType::NominateCard>
+struct NominateCard final : ServerMessage<ServerMessageType::NominateCard>
 {
     std::string room_name;
     std::string user_uuid;

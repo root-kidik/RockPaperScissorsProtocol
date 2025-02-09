@@ -3,12 +3,12 @@
 #include <optional>
 #include <string>
 
-#include <RockPaperScissorsProtocol/entity/client/ClientCommand.hpp>
+#include <RockPaperScissorsProtocol/entity/client/ClientMessage.hpp>
 
 namespace rps::protocol::entity::client::request
 {
 
-struct NewPlayerAdded final : ClientCommand<ClientCommandType::NewPlayerAdded>
+struct NewPlayerAdded final : ClientMessage<ClientMessageType::NewPlayerAdded>
 {
     std::string user_nickname;
 

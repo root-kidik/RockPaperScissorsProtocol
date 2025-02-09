@@ -5,7 +5,7 @@
 #include <string>
 #include <tuple>
 
-#include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
+#include <RockPaperScissorsProtocol/entity/MessageRepresentation.hpp>
 
 namespace rps::protocol::util
 {
@@ -89,10 +89,10 @@ T deserialize(std::string&& str)
     return obj;
 }
 
-template <typename Command>
-std::string serialize_command(Command&& command)
+template <typename Message>
+std::string serialize_message(Message&& command)
 {
-    return std::to_string(static_cast<entity::CommandRepresentation>(Command::kType)) + ' ' + serialize(std::move(command));
+    return std::to_string(static_cast<entity::MessageRepresentation>(Message::kType)) + ' ' + serialize(std::move(command));
 }
 
 template <typename Enum, typename = std::enable_if_t<std::is_enum_v<Enum>>>

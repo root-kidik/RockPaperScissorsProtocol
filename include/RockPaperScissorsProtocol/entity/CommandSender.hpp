@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
+#include <RockPaperScissorsProtocol/entity/MessageRepresentation.hpp>
 #include <RockPaperScissorsProtocol/interface/Connection.hpp>
 #include <RockPaperScissorsProtocol/util/Util.hpp>
 
@@ -16,7 +16,7 @@ public:
     template <typename Request>
     void send(Request&& command, const std::shared_ptr<interface::Connection>& connection)
     {
-        connection->send(util::serialize_command(std::move(command)));
+        connection->send(util::serialize_message(std::move(command)));
     }
 };
 

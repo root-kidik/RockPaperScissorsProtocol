@@ -1,11 +1,11 @@
 #pragma once
 
-#include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
+#include <RockPaperScissorsProtocol/entity/MessageRepresentation.hpp>
 
 namespace rps::protocol::entity::client
 {
 
-enum class ClientCommandType : CommandRepresentation
+enum class ClientMessageType : MessageRepresentation
 {
     Begin = 10'000, // just for min value
     Status,
