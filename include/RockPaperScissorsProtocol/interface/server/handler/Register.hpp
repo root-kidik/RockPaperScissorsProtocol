@@ -2,11 +2,11 @@
 
 #include <RockPaperScissorsProtocol/entity/server/request/Register.hpp>
 #include <RockPaperScissorsProtocol/entity/server/response/Register.hpp>
-#include <RockPaperScissorsProtocol/interface/CommandHandler.hpp>
+#include <RockPaperScissorsProtocol/interface/MessageHandler.hpp>
 
 namespace rps::protocol::interface::server::handler
 {
 
-using Register = CommandHandler<entity::server::request::Register, entity::server::response::Register>;
+using Register = MessageHandler<entity::server::request::Register, entity::server::response::Register>;
 
 } // namespace rps::protocol::interface::server::handler

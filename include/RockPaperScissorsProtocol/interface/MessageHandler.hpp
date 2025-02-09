@@ -3,14 +3,14 @@
 #include <memory>
 #include <string>
 
-#include <RockPaperScissorsProtocol/interface/CommandHandlerBase.hpp>
+#include <RockPaperScissorsProtocol/interface/MessageHandlerBase.hpp>
 #include <RockPaperScissorsProtocol/util/Util.hpp>
 
 namespace rps::protocol::interface
 {
 
 template <typename Request, typename Response>
-class CommandHandler : public CommandHandlerBase
+class MessageHandler : public MessageHandlerBase
 {
 public:
     using RequestType = Request;

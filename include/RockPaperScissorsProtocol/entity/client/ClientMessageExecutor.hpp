@@ -1,11 +1,11 @@
 #pragma once
 
-#include <RockPaperScissorsProtocol/entity/CommandExecutor.hpp>
+#include <RockPaperScissorsProtocol/entity/MessageExecutor.hpp>
 #include <RockPaperScissorsProtocol/entity/client/ClientMessageType.hpp>
 
 namespace rps::protocol::entity::client
 {
 
-using ClientCommandExecutor = CommandExecutor<ClientMessageType>;
+using ClientMessageExecutor = MessageExecutor<ClientMessageType>;
 
 } // namespace rps::protocol::entity::client

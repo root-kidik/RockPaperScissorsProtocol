@@ -9,8 +9,8 @@
 namespace rps::protocol::entity
 {
 
-// TODO: after full complete server-side, inherit from CommandHandler, add partial specialization for void, and get answer
-class CommandSender
+// TODO: after full complete server-side, inherit from MessageHandler, add partial specialization for void, and get answer
+class MessageSender
 {
 public:
     template <typename Request>
