@@ -5,10 +5,10 @@
 
 #include <RockPaperScissorsProtocol/entity/server/ServerCommand.hpp>
 
-namespace rps::protocol::entity::server
+namespace rps::protocol::entity::server::request
 {
 
-struct RegisterRequest final : ServerCommand<ServerCommandType::Register>
+struct Register final : ServerCommand<ServerCommandType::Register>
 {
     std::string user_nickname;
 
@@ -18,4 +18,4 @@ struct RegisterRequest final : ServerCommand<ServerCommandType::Register>
     }
 };
 
-} // namespace rps::protocol::entity::server
+} // namespace rps::protocol::entity::server::request

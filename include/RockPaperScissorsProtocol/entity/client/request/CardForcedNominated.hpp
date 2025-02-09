@@ -1,14 +1,15 @@
 #pragma once
 
+#include <array>
 #include <tuple>
 
 #include <RockPaperScissorsProtocol/entity/Card.hpp>
 #include <RockPaperScissorsProtocol/entity/client/ClientCommand.hpp>
 
-namespace rps::protocol::entity::client
+namespace rps::protocol::entity::client::request
 {
 
-struct DealMissingCardRequest final : ClientCommand<ClientCommandType::DealMissingCard>
+struct CardForcedNominated final : ClientCommand<ClientCommandType::CardForcedNominated>
 {
     Card card;
 
@@ -18,4 +19,4 @@ struct DealMissingCardRequest final : ClientCommand<ClientCommandType::DealMissi
     }
 };
 
-} // namespace rps::protocol::entity::client
+} // namespace rps::protocol::entity::client::request

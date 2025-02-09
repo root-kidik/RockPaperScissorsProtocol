@@ -5,10 +5,10 @@
 
 #include <RockPaperScissorsProtocol/entity/client/ClientCommand.hpp>
 
-namespace rps::protocol::entity::client
+namespace rps::protocol::entity::client::response
 {
 
-struct StatusResponse final : ClientCommand<ClientCommandType::Status>
+struct Status final : ClientCommand<ClientCommandType::Status>
 {
     bool is_ok;
 
@@ -18,4 +18,4 @@ struct StatusResponse final : ClientCommand<ClientCommandType::Status>
     }
 };
 
-} // namespace rps::protocol::entity::client
+} // namespace rps::protocol::entity::client::response

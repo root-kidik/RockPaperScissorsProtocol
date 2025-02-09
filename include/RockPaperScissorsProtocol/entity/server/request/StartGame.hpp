@@ -5,10 +5,10 @@
 
 #include <RockPaperScissorsProtocol/entity/server/ServerCommand.hpp>
 
-namespace rps::protocol::entity::server
+namespace rps::protocol::entity::server::request
 {
 
-struct StartGameRequest final : ServerCommand<ServerCommandType::StartGame>
+struct StartGame final : ServerCommand<ServerCommandType::StartGame>
 {
     std::string user_uuid;
     std::string room_name;
@@ -19,4 +19,4 @@ struct StartGameRequest final : ServerCommand<ServerCommandType::StartGame>
     }
 };
 
-} // namespace rps::protocol::entity::server
+} // namespace rps::protocol::entity::server::request

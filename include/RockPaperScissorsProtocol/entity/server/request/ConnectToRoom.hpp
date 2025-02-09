@@ -5,10 +5,10 @@
 
 #include <RockPaperScissorsProtocol/entity/server/ServerCommand.hpp>
 
-namespace rps::protocol::entity::server
+namespace rps::protocol::entity::server::request
 {
 
-struct ConnectToRoomRequest final : ServerCommand<ServerCommandType::ConnectToRoom>
+struct ConnectToRoom final : ServerCommand<ServerCommandType::ConnectToRoom>
 {
     std::string user_uuid;
     std::string room_name;
@@ -19,4 +19,4 @@ struct ConnectToRoomRequest final : ServerCommand<ServerCommandType::ConnectToRo
     }
 };
 
-} // namespace rps::protocol::entity::server
+} // namespace rps::protocol::entity::server::request

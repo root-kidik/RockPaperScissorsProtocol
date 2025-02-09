@@ -6,10 +6,10 @@
 #include <RockPaperScissorsProtocol/entity/Card.hpp>
 #include <RockPaperScissorsProtocol/entity/client/ClientCommand.hpp>
 
-namespace rps::protocol::entity::client
+namespace rps::protocol::entity::client::request
 {
 
-struct GameStartedRequest final : ClientCommand<ClientCommandType::GameStarted>
+struct GameStarted final : ClientCommand<ClientCommandType::GameStarted>
 {
     std::array<Card, kMaxCardsPerPlayer> cards;
 
@@ -19,4 +19,4 @@ struct GameStartedRequest final : ClientCommand<ClientCommandType::GameStarted>
     }
 };
 
-} // namespace rps::protocol::entity::client
+} // namespace rps::protocol::entity::client::request

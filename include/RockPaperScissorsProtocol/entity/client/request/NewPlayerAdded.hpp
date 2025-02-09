@@ -5,10 +5,10 @@
 
 #include <RockPaperScissorsProtocol/entity/client/ClientCommand.hpp>
 
-namespace rps::protocol::entity::client
+namespace rps::protocol::entity::client::request
 {
 
-struct NewPlayerAddedRequest final : ClientCommand<ClientCommandType::NewPlayerAdded>
+struct NewPlayerAdded final : ClientCommand<ClientCommandType::NewPlayerAdded>
 {
     std::string user_nickname;
 
@@ -18,4 +18,4 @@ struct NewPlayerAddedRequest final : ClientCommand<ClientCommandType::NewPlayerA
     }
 };
 
-} // namespace rps::protocol::entity::client
+} // namespace rps::protocol::entity::client::request

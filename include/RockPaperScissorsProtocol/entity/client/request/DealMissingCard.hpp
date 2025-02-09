@@ -5,10 +5,10 @@
 #include <RockPaperScissorsProtocol/entity/Card.hpp>
 #include <RockPaperScissorsProtocol/entity/client/ClientCommand.hpp>
 
-namespace rps::protocol::entity::client
+namespace rps::protocol::entity::client::request
 {
 
-struct CardRaisedRequest final : ClientCommand<ClientCommandType::CardRaised>
+struct DealMissingCard final : ClientCommand<ClientCommandType::DealMissingCard>
 {
     Card card;
 
@@ -18,4 +18,4 @@ struct CardRaisedRequest final : ClientCommand<ClientCommandType::CardRaised>
     }
 };
 
-} // namespace rps::protocol::entity::client
+} // namespace rps::protocol::entity::client::request

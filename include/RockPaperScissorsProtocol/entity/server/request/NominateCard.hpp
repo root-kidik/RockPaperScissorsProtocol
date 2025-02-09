@@ -6,10 +6,10 @@
 #include <RockPaperScissorsProtocol/entity/Card.hpp>
 #include <RockPaperScissorsProtocol/entity/server/ServerCommand.hpp>
 
-namespace rps::protocol::entity::server
+namespace rps::protocol::entity::server::request
 {
 
-struct NominateCardRequest final : ServerCommand<ServerCommandType::NominateCard>
+struct NominateCard final : ServerCommand<ServerCommandType::NominateCard>
 {
     std::string room_name;
     std::string user_uuid;
@@ -21,4 +21,4 @@ struct NominateCardRequest final : ServerCommand<ServerCommandType::NominateCard
     }
 };
 
-} // namespace rps::protocol::entity::server
+} // namespace rps::protocol::entity::server::request

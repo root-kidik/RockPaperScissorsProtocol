@@ -5,10 +5,10 @@
 
 #include <RockPaperScissorsProtocol/entity/client/ClientCommand.hpp>
 
-namespace rps::protocol::entity::client
+namespace rps::protocol::entity::client::request
 {
 
-struct RoundInfoRequest final : ClientCommand<ClientCommandType::RoundInfo>
+struct RoundInfo final : ClientCommand<ClientCommandType::RoundInfo>
 {
     bool is_winned;
 
@@ -18,4 +18,4 @@ struct RoundInfoRequest final : ClientCommand<ClientCommandType::RoundInfo>
     }
 };
 
-} // namespace rps::protocol::entity::client
+} // namespace rps::protocol::entity::client::request
