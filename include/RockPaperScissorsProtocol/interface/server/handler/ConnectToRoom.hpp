@@ -2,12 +2,12 @@
 
 #include <RockPaperScissorsProtocol/entity/server/request/ConnectToRoom.hpp>
 #include <RockPaperScissorsProtocol/entity/server/response/Status.hpp>
-#include <RockPaperScissorsProtocol/interface/MessageHandler.hpp>
+#include <RockPaperScissorsProtocol/interface/RequestHandler.hpp>
 
 namespace rps::protocol::interface::server::handler
 {
 
-using ConnectToRoom = MessageHandler<entity::server::request::ConnectToRoom,
+using ConnectToRoom = RequestHandler<entity::server::request::ConnectToRoom,
                                      entity::server::response::Status<entity::server::request::ConnectToRoom>>;
 
 } // namespace rps::protocol::interface::server::handler

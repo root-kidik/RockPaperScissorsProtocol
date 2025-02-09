@@ -8,7 +8,7 @@
 
 #include <RockPaperScissorsProtocol/entity/MessageRepresentation.hpp>
 #include <RockPaperScissorsProtocol/interface/Connection.hpp>
-#include <RockPaperScissorsProtocol/interface/MessageHandlerBase.hpp>
+#include <RockPaperScissorsProtocol/interface/RequestHandlerBase.hpp>
 
 namespace rps::protocol::entity
 {
@@ -41,17 +41,17 @@ public:
         it->second->execute(std::move(data), connection);
     }
 
-    template <typename MessageHandler, typename... Args>
+    template <typename RequestHandler, typename... Args>
     void register_command(Args&&... args)
     {
-        assert(m_commands.find(MessageHandler::Request::kType) == m_commands.end() &&
+        assert(m_commands.find(RequestHandler::Request::kType) == m_commands.end() &&
                "Already setted command to execute this message_type");
 
-        m_commands.emplace(MessageHandler::Request::kType, std::make_unique<MessageHandler>(std::forward<Args>(args)...));
+        m_commands.emplace(RequestHandler::Request::kType, std::make_unique<RequestHandler>(std::forward<Args>(args)...));
     }
 
 private:
-    std::unordered_map<MessageType, std::unique_ptr<interface::MessageHandlerBase>> m_commands;
+    std::unordered_map<MessageType, std::unique_ptr<interface::RequestHandlerBase>> m_commands;
 };
 
 } // namespace rps::protocol::entity

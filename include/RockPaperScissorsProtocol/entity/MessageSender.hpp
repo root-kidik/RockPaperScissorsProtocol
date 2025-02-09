@@ -9,7 +9,7 @@
 namespace rps::protocol::entity
 {
 
-// TODO: after full complete server-side, inherit from MessageHandler, add partial specialization for void, and get answer
+// TODO: after full complete server-side, inherit from RequestHandler, add partial specialization for void, and get answer
 class MessageSender
 {
 public:
