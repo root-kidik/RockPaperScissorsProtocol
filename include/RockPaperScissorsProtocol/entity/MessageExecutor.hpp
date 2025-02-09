@@ -48,7 +48,7 @@ public:
         {
             auto it = m_response_handlers.find(static_cast<ResponseMessageType>(message_type));
 
-            assert(it != m_response_handlers.end() && "Not setted request handler to handle this message_type");
+            assert(it != m_response_handlers.end() && "Not setted response handler to handle this message_type");
 
             it->second->execute(std::move(data), connection);
         }

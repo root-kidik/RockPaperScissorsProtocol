@@ -6,7 +6,7 @@ namespace rps::protocol::entity::server::response
 {
 
 template <typename Response>
-struct Status : ServerMessage<Response::kType>
+struct Status final : ServerMessage<Response::kType>
 {
     bool is_ok;
 
