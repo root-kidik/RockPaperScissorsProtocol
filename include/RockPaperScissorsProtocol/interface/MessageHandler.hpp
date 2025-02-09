@@ -9,11 +9,12 @@
 namespace rps::protocol::interface
 {
 
-template <typename Request, typename Response>
+template <typename RequestType, typename ResponseType>
 class MessageHandler : public MessageHandlerBase
 {
 public:
-    using RequestType = Request;
+    using Request  = RequestType;
+    using Response = ResponseType;
 
     void execute(std::string&& data, const std::shared_ptr<Connection>& connection) override final
     {

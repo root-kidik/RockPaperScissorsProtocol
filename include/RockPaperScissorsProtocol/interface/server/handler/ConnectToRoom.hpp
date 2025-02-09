@@ -7,6 +7,7 @@
 namespace rps::protocol::interface::server::handler
 {
 
-using ConnectToRoom = MessageHandler<entity::server::request::ConnectToRoom, entity::server::response::Status>;
+using ConnectToRoom = MessageHandler<entity::server::request::ConnectToRoom,
+                                     entity::server::response::Status<entity::server::request::ConnectToRoom>>;
 
 } // namespace rps::protocol::interface::server::handler

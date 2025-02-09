@@ -44,10 +44,10 @@ public:
     template <typename MessageHandler, typename... Args>
     void register_command(Args&&... args)
     {
-        assert(m_commands.find(MessageHandler::RequestType::kType) == m_commands.end() &&
+        assert(m_commands.find(MessageHandler::Request::kType) == m_commands.end() &&
                "Already setted command to execute this message_type");
 
-        m_commands.emplace(MessageHandler::RequestType::kType,
+        m_commands.emplace(MessageHandler::Request::kType,
                            std::make_unique<MessageHandler>(std::forward<Args>(args)...));
     }
 

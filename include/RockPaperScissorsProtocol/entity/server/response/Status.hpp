@@ -1,14 +1,12 @@
 #pragma once
 
-#include <optional>
-#include <string>
-
 #include <RockPaperScissorsProtocol/entity/server/ServerMessage.hpp>
 
 namespace rps::protocol::entity::server::response
 {
 
-struct Status final : ServerMessage<ServerMessageType::Status>
+template <typename Response>
+struct Status : ServerMessage<Response::kType>
 {
     bool is_ok;
 
