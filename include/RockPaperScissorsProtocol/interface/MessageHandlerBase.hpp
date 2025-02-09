@@ -8,10 +8,10 @@
 namespace rps::protocol::interface
 {
 
-class RequestHandlerBase
+class MessageHandlerBase
 {
 public:
-    virtual ~RequestHandlerBase() = default;
+    virtual ~MessageHandlerBase() = default;
 
     virtual void execute(std::string&& data, const std::shared_ptr<Connection>& connection) = 0;
 };

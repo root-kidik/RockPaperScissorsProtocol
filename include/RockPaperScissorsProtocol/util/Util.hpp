@@ -102,4 +102,10 @@ bool is_enum_has_valid_value(Enum e)
            static_cast<std::underlying_type_t<Enum>>(e) < static_cast<std::underlying_type_t<Enum>>(Enum::End);
 }
 
+template <typename Enum, typename = std::enable_if_t<std::is_enum_v<Enum>>>
+bool is_valid_value_for_enum(std::underlying_type_t<Enum> value)
+{
+    return is_enum_has_valid_value(static_cast<Enum>(value));
+}
+
 } // namespace rps::protocol::util

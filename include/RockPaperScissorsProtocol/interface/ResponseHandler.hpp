@@ -9,19 +9,18 @@
 namespace rps::protocol::interface
 {
 
-template <typename RequestType, typename ResponseType>
-class RequestHandler : public MessageHandlerBase
+template <typename ResponseType>
+class ResponseHandler : public MessageHandlerBase
 {
 public:
-    using Request  = RequestType;
     using Response = ResponseType;
 
     void execute(std::string&& data, const std::shared_ptr<Connection>& connection) override final
     {
-        connection->send(util::serialize_message(handle(util::deserialize<Request>(std::move(data)), connection)));
+        handle(util::deserialize<Response>(std::move(data)));
     }
 
-    virtual Response handle(Request&& request, const std::shared_ptr<Connection>& connection) = 0;
+    virtual void handle(Response&& response) = 0;
 };
 
 } // namespace rps::protocol::interface

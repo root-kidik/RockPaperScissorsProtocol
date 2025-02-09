@@ -8,12 +8,13 @@
 
 #include <RockPaperScissorsProtocol/entity/MessageRepresentation.hpp>
 #include <RockPaperScissorsProtocol/interface/Connection.hpp>
-#include <RockPaperScissorsProtocol/interface/RequestHandlerBase.hpp>
+#include <RockPaperScissorsProtocol/interface/MessageHandlerBase.hpp>
+#include <RockPaperScissorsProtocol/util/Util.hpp>
 
 namespace rps::protocol::entity
 {
 
-template <typename MessageType>
+template <typename RequestMessageType, typename ResponseMessageType>
 class MessageExecutor
 {
 public:
@@ -24,34 +25,58 @@ public:
         entity::MessageRepresentation message_type;
         iss >> message_type;
 
-        if (message_type < static_cast<entity::MessageRepresentation>(MessageType::Begin) + 1 ||
-            message_type > static_cast<entity::MessageRepresentation>(MessageType::End) - 1)
+        std::string data;
+        std::getline(std::move(iss), data);
+
+        if (data.empty())
             return;
 
-        std::string data;
-        std::getline(iss, data);
+        if (!std::isspace(data.front()))
+            return;
 
-        if (!data.empty() && std::isspace(data.front()))
-            data.erase(0, 1);
+        data.erase(0, 1);
 
-        auto it = m_commands.find(static_cast<MessageType>(message_type));
+        if (util::is_valid_value_for_enum<RequestMessageType>(message_type))
+        {
+            auto it = m_request_handlers.find(static_cast<RequestMessageType>(message_type));
 
-        assert(it != m_commands.end() && "Not setted command to execute this message_type");
+            assert(it != m_request_handlers.end() && "Not setted request handler to handle this message_type");
 
-        it->second->execute(std::move(data), connection);
+            it->second->execute(std::move(data), connection);
+        }
+        else if (util::is_valid_value_for_enum<ResponseMessageType>(message_type))
+        {
+            auto it = m_response_handlers.find(static_cast<ResponseMessageType>(message_type));
+
+            assert(it != m_response_handlers.end() && "Not setted request handler to handle this message_type");
+
+            it->second->execute(std::move(data), connection);
+        }
     }
 
     template <typename RequestHandler, typename... Args>
-    void register_command(Args&&... args)
+    void register_request_handler(Args&&... args)
     {
-        assert(m_commands.find(RequestHandler::Request::kType) == m_commands.end() &&
-               "Already setted command to execute this message_type");
+        assert(m_request_handlers.find(RequestHandler::Request::kType) == m_request_handlers.end() &&
+               "Already setted request handler to handle this message_type");
 
-        m_commands.emplace(RequestHandler::Request::kType, std::make_unique<RequestHandler>(std::forward<Args>(args)...));
+        m_request_handlers.emplace(RequestHandler::Request::kType,
+                                   std::make_unique<RequestHandler>(std::forward<Args>(args)...));
+    }
+
+    template <typename ResponseHandler, typename... Args>
+    void register_response_handler(Args&&... args)
+    {
+        assert(m_response_handlers.find(ResponseHandler::Response::kType) == m_response_handlers.end() &&
+               "Already setted response handler to handle this message_type");
+
+        m_response_handlers.emplace(ResponseHandler::Response::kType,
+                                    std::make_unique<ResponseHandler>(std::forward<Args>(args)...));
     }
 
 private:
-    std::unordered_map<MessageType, std::unique_ptr<interface::RequestHandlerBase>> m_commands;
+    std::unordered_map<RequestMessageType, std::unique_ptr<interface::MessageHandlerBase>>  m_request_handlers;
+    std::unordered_map<ResponseMessageType, std::unique_ptr<interface::MessageHandlerBase>> m_response_handlers;
 };
 
 } // namespace rps::protocol::entity
