@@ -4,9 +4,9 @@
 #include <RockPaperScissorsProtocol/entity/server/response/StatusResponse.hpp>
 #include <RockPaperScissorsProtocol/interface/CommandHandler.hpp>
 
-namespace rps::protocol::interface
+namespace rps::protocol::interface::server::handler
 {
 
-using NominateCardCommandHandlerBase = CommandHandler<entity::server::NominateCardRequest, entity::server::StatusResponse>;
+using NominateCard = CommandHandler<entity::server::NominateCardRequest, entity::server::StatusResponse>;
 
-} // namespace rps::protocol::interface
+} // namespace rps::protocol::interface::server::handler

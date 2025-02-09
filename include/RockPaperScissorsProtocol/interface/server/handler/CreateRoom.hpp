@@ -4,9 +4,9 @@
 #include <RockPaperScissorsProtocol/entity/server/response/StatusResponse.hpp>
 #include <RockPaperScissorsProtocol/interface/CommandHandler.hpp>
 
-namespace rps::protocol::interface
+namespace rps::protocol::interface::server::handler
 {
 
-using CreateRoomCommandHandlerBase = CommandHandler<entity::server::CreateRoomRequest, entity::server::StatusResponse>;
+using CreateRoom = CommandHandler<entity::server::CreateRoomRequest, entity::server::StatusResponse>;
 
-} // namespace rps::protocol::interface
+} // namespace rps::protocol::interface::server::handler

@@ -4,9 +4,9 @@
 #include <RockPaperScissorsProtocol/entity/server/response/RegisterResponse.hpp>
 #include <RockPaperScissorsProtocol/interface/CommandHandler.hpp>
 
-namespace rps::protocol::interface
+namespace rps::protocol::interface::server::handler
 {
 
-using RegisterCommandHandlerBase = CommandHandler<entity::server::RegisterRequest, entity::server::RegisterResponse>;
+using Register = CommandHandler<entity::server::RegisterRequest, entity::server::RegisterResponse>;
 
-} // namespace rps::protocol::interface
+} // namespace rps::protocol::interface::server::handler

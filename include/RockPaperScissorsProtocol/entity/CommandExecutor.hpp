@@ -2,9 +2,9 @@
 
 #include <cassert>
 #include <memory>
+#include <sstream>
 #include <string>
 #include <unordered_map>
-#include <sstream>
 
 #include <RockPaperScissorsProtocol/entity/CommandRepresentation.hpp>
 #include <RockPaperScissorsProtocol/interface/CommandHandlerBase.hpp>

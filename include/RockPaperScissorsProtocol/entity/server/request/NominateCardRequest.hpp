@@ -4,7 +4,6 @@
 #include <string>
 
 #include <RockPaperScissorsProtocol/entity/Card.hpp>
-
 #include <RockPaperScissorsProtocol/entity/server/ServerCommand.hpp>
 
 namespace rps::protocol::entity::server
@@ -14,7 +13,7 @@ struct NominateCardRequest final : ServerCommand<ServerCommandType::NominateCard
 {
     std::string room_name;
     std::string user_uuid;
-    Card card;
+    Card        card;
 
     auto as_tuple()
     {

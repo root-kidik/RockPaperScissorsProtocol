@@ -4,9 +4,9 @@
 #include <RockPaperScissorsProtocol/entity/server/response/StatusResponse.hpp>
 #include <RockPaperScissorsProtocol/interface/CommandHandler.hpp>
 
-namespace rps::protocol::interface
+namespace rps::protocol::interface::server::handler
 {
 
-using StartGameCommandHandlerBase = CommandHandler<entity::server::StartGameRequest, entity::server::StatusResponse>;
+using StartGame = CommandHandler<entity::server::StartGameRequest, entity::server::StatusResponse>;
 
-} // namespace rps::protocol::interface
+} // namespace rps::protocol::interface::server::handler
