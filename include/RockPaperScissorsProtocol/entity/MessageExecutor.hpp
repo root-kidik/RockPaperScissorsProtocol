@@ -47,8 +47,7 @@ public:
         assert(m_commands.find(MessageHandler::Request::kType) == m_commands.end() &&
                "Already setted command to execute this message_type");
 
-        m_commands.emplace(MessageHandler::Request::kType,
-                           std::make_unique<MessageHandler>(std::forward<Args>(args)...));
+        m_commands.emplace(MessageHandler::Request::kType, std::make_unique<MessageHandler>(std::forward<Args>(args)...));
     }
 
 private:
