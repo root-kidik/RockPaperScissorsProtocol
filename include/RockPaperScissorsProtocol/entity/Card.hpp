@@ -16,6 +16,7 @@ enum class Card : CardRepresentation
     Rock,
     Paper,
     Scissors,
+    Backface,
     End // just for max value
 };
 
