@@ -1,0 +1,21 @@
+#pragma once
+
+#include <optional>
+#include <string>
+
+#include <RockPaperScissorsProtocol/entity/server/ServerMessage.hpp>
+
+namespace rps::protocol::entity::server::response
+{
+
+struct Login final : ServerMessage<ServerMessageType::Login>
+{
+    std::string user_uuid;
+
+    auto as_tuple()
+    {
+        return std::tie(user_uuid);
+    }
+};
+
+} // namespace rps::protocol::entity::server::response

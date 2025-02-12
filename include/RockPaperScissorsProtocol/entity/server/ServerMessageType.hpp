@@ -10,6 +10,7 @@ enum class ServerMessageType : MessageRepresentation
     Begin, // just for min value
     Status,
     Register,
+    Login,
     CreateRoom,
     ConnectToRoom,
     StartGame,
