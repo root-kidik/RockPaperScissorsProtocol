@@ -1,6 +1,5 @@
 #pragma once
 
-#include <optional>
 #include <string>
 
 #include <RockPaperScissorsProtocol/entity/client/ClientMessage.hpp>

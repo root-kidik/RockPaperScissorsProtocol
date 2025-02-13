@@ -11,11 +11,12 @@ namespace rps::protocol::entity::server::response
 
 struct ConnectToRoom final : ServerMessage<ServerMessageType::ConnectToRoom>
 {
+    bool is_ok;
     std::array<std::string, kMaxPlayersPerRoom - 1> existed_players;
 
     auto as_tuple()
     {
-        return std::tie(existed_players);
+        return std::tie(is_ok, existed_players);
     }
 };
 
