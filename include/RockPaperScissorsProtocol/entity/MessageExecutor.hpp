@@ -13,6 +13,7 @@
 #include <RockPaperScissorsProtocol/entity/MessageRepresentation.hpp>
 #include <RockPaperScissorsProtocol/interface/Connection.hpp>
 #include <RockPaperScissorsProtocol/interface/MessageHandlerBase.hpp>
+#include <RockPaperScissorsProtocol/entity/MessageSender.hpp>
 #include <RockPaperScissorsProtocol/util/Util.hpp>
 
 namespace rps::protocol::entity
@@ -25,6 +26,9 @@ public:
     void execute_message(std::string&& raw_data, const std::shared_ptr<interface::Connection>& connection)
     {
         std::istringstream iss{std::move(raw_data)};
+
+        entity::MessageIdx message_idx;
+        iss >> message_idx;
 
         entity::MessageRepresentation message_type;
         iss >> message_type;
@@ -53,17 +57,7 @@ public:
             it->second->execute(std::move(data), connection);
         }
         else if (util::is_valid_value_for_enum<ResponseMessageType>(message_type))
-        {
-            auto it = m_response_handlers.find(static_cast<ResponseMessageType>(message_type));
-
-#ifndef NDEBUG
-            std::cout << "Not setted response handler to handle this message_type\n";
-#endif
-            if (it == m_response_handlers.end())
-                return;
-
-            it->second->execute(std::move(data), connection);
-        }
+            m_message_sender.handle_response(message_idx, std::move(data), connection);
     }
 
     template <typename RequestHandler, typename... Args>
@@ -76,19 +70,14 @@ public:
                                    std::make_unique<RequestHandler>(std::forward<Args>(args)...));
     }
 
-    template <typename ResponseHandler, typename... Args>
-    void register_response_handler(Args&&... args)
+    void register_response_handler(entity::MessageSender& message_sender)
     {
-        assert(m_response_handlers.find(ResponseHandler::Response::kType) == m_response_handlers.end() &&
-               "Already setted response handler to handle this message_type");
-
-        m_response_handlers.emplace(ResponseHandler::Response::kType,
-                                    std::make_unique<ResponseHandler>(std::forward<Args>(args)...));
+        m_message_sender = message_sender;
     }
 
 private:
-    std::unordered_map<RequestMessageType, std::unique_ptr<interface::MessageHandlerBase>>  m_request_handlers;
-    std::unordered_map<ResponseMessageType, std::unique_ptr<interface::MessageHandlerBase>> m_response_handlers;
+    std::unordered_map<RequestMessageType, std::unique_ptr<interface::MessageHandlerBase>> m_request_handlers;
+    entity::MessageSender&                                                                 m_message_sender;
 };
 
 } // namespace rps::protocol::entity
