@@ -3,6 +3,7 @@
 #include <functional>
 #include <memory>
 #include <queue>
+#include <cassert>
 
 #include <RockPaperScissorsProtocol/entity/MessageRepresentation.hpp>
 #include <RockPaperScissorsProtocol/interface/Connection.hpp>
@@ -17,21 +18,29 @@ public:
     template <typename Request, typename Response>
     void send(Request&&                                     message,
               const std::shared_ptr<interface::Connection>& connection,
-              std::function<void(Response&&)>               callback = nullptr)
+              std::function<void(Response&&)>               callback)
     {
-        connection->send(std::to_string(m_sended_message_count++) + ' ' + util::serialize_message(std::move(message)));
+        assert(callback && "Callback must be setted");
 
-        if (!callback)
-            return;
+        connection->send(std::to_string(m_sended_message_count++) + ' ' + util::serialize_message(std::move(message)));
 
         Callback cb;
         cb.message_idx = message.idx;
-        cb.callback    = [](std::string&& data) { callback(util::deserialize<Response>(std::move(data))); };
+        cb.callback    = [cb = std::move(callback)](std::string&& data)
+        { cb(util::deserialize<Response>(std::move(data))); };
 
         m_callbacks.emplace(connection.get(), std::move(cb));
     }
 
-    void handle_response(entity::MessageIdx message_idx, std::string&& data, const std::shared_ptr<interface::Connection>& connection)
+    template <typename Request>
+    void send(Request&& message, const std::shared_ptr<interface::Connection>& connection)
+    {
+        connection->send(std::to_string(m_sended_message_count++) + ' ' + util::serialize_message(std::move(message)));
+    }
+
+    void handle_response(entity::MessageIdx                            message_idx,
+                         std::string&&                                 data,
+                         const std::shared_ptr<interface::Connection>& connection)
     {
         auto it = m_callbacks.find(connection.get());
         if (it == m_callbacks.end())

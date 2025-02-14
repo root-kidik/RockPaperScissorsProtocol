@@ -23,6 +23,11 @@ template <typename RequestMessageType, typename ResponseMessageType>
 class MessageExecutor
 {
 public:
+    MessageExecutor(entity::MessageSender& message_sender) : m_message_sender{message_sender}
+    {
+
+    }
+
     void execute_message(std::string&& raw_data, const std::shared_ptr<interface::Connection>& connection)
     {
         std::istringstream iss{std::move(raw_data)};
@@ -66,13 +71,11 @@ public:
         assert(m_request_handlers.find(RequestHandler::Request::kType) == m_request_handlers.end() &&
                "Already setted request handler to handle this message_type");
 
+        auto handler = std::make_unique<RequestHandler>(std::forward<Args>(args)...);
+        handler->m_message_sender = m_message_sender;
+        
         m_request_handlers.emplace(RequestHandler::Request::kType,
-                                   std::make_unique<RequestHandler>(std::forward<Args>(args)...));
-    }
-
-    void register_response_handler(entity::MessageSender& message_sender)
-    {
-        m_message_sender = message_sender;
+                                   std::move(handler));
     }
 
 private:
