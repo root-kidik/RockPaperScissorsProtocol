@@ -56,11 +56,13 @@ public:
         {
             auto it = m_response_handlers.find(static_cast<ResponseMessageType>(message_type));
 
-#ifndef NDEBUG
-            std::cout << "Not setted response handler to handle this message_type\n";
-#endif
             if (it == m_response_handlers.end())
+            {
+#ifndef NDEBUG
+                std::cout << "Not setted response handler to handle this message_type\n";
+#endif
                 return;
+            }
 
             it->second->execute(std::move(data), connection);
         }
