@@ -41,7 +41,7 @@ public:
         data.erase(0, 1);
 
 #ifndef NDEBUG
-        std::cout << data << '\n';
+        std::cout << "receive: " << data << '\n';
 #endif
 
         if (util::is_valid_value_for_enum<RequestMessageType>(message_type))
