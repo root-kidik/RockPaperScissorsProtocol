@@ -63,7 +63,7 @@ private:
     void execute_message(std::string&& raw_data, const std::shared_ptr<interface::Connection>& connection)
     {
 #ifndef NDEBUG
-        std::cout << "receive" << raw_data;
+        std::cout << "receive: " << raw_data;
 #endif
 
         std::istringstream iss{std::move(raw_data)};
