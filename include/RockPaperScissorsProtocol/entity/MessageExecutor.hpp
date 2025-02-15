@@ -24,6 +24,10 @@ class MessageExecutor
 public:
     void execute_message(std::string&& raw_data, const std::shared_ptr<interface::Connection>& connection)
     {
+#ifndef NDEBUG
+        std::cout << "receive: " << data << '\n';
+#endif
+
         std::istringstream iss{std::move(raw_data)};
 
         entity::MessageRepresentation message_type;
@@ -39,10 +43,6 @@ public:
             return;
 
         data.erase(0, 1);
-
-#ifndef NDEBUG
-        std::cout << "receive: " << data << '\n';
-#endif
 
         if (util::is_valid_value_for_enum<RequestMessageType>(message_type))
         {
