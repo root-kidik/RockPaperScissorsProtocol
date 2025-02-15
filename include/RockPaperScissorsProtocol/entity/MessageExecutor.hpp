@@ -25,7 +25,7 @@ public:
     void execute_message(std::string&& raw_data, const std::shared_ptr<interface::Connection>& connection)
     {
 #ifndef NDEBUG
-        std::cout << "receive: " << data << '\n';
+        std::cout << "receive: " << raw_data << '\n';
 #endif
 
         std::istringstream iss{std::move(raw_data)};
