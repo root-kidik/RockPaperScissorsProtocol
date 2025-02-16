@@ -71,6 +71,10 @@ private:
         entity::MessageRepresentation message_type;
         iss >> message_type;
 
+#ifndef NDEBUG
+        std::cout << '\n' << "message_type: " << message_type << '\n';
+#endif
+
         std::string data;
         std::getline(std::move(iss), data);
 
