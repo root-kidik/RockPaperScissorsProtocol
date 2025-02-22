@@ -15,6 +15,7 @@ enum class ClientMessageType : MessageRepresentation
     CardRaised,
     RoundInfo,
     DealMissingCard,
+    GameResult,
     End // just for max value
 };
 
