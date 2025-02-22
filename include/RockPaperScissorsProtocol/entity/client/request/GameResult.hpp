@@ -8,7 +8,7 @@
 namespace rps::protocol::entity::client::request
 {
 
-struct RoundInfo final : ClientMessage<ClientMessageType::GameResult>
+struct GameResult final : ClientMessage<ClientMessageType::GameResult>
 {
     bool is_winned;
 
